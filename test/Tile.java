@@ -25,5 +25,12 @@ public class Tile {
 
     public class Bag {
 
+        int[] quantities;
+        Tile[] tiles;
+
+        private Bag() {
+            this.quantities = new int[26];
+            this.tiles = new Tile[26];
+        }
     }
 }
