@@ -15,17 +15,28 @@ public class Tile {
 
     @Override
     public int hashCode() {
-        // TODO Auto-generated method stub
-        return super.hashCode();
-        // specify it according to the class
-        // implements of hashcode
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + letter;
+        result = prime * result + score;
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        // TODO Auto-generated method stub
-        return super.equals(obj);
-        // specify it according to the class
+
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || (getClass() != obj.getClass())) {
+            return false;
+        }
+        Tile other = (Tile) obj;
+        if (letter != other.letter || score != other.score) {
+            return false;
+        }
+        return true;
+
     }
 
     public static class Bag {
@@ -46,14 +57,14 @@ public class Tile {
         }
 
         public Tile getRand() {
-            // if the Bag is empty return null
-            // else for each time the quantity is zero calculate other random number and
-            // check
+            if (this.size() == 0) {
+                return null;
+            }
             Random rnd = new Random();
             int i = rnd.nextInt(this.quantities.length);
 
-            if (quantities[i] == 0) {
-                return null;
+            while (quantities[i] == 0) {
+                i = rnd.nextInt(this.quantities.length);
             }
             quantities[i]--;
             return tiles[i];
@@ -70,9 +81,13 @@ public class Tile {
 
         }
 
-        public void put(Tile tile) {
+        public void put(Tile tile) { // * */
+            int[] amounts = { 9, 2, 2, 4, 12, 2, 3, 2, 9, 1, 1, 4, 2, 6, 8, 2, 1, 6, 4, 6, 4, 2, 2, 1, 2,
+                    1 };
             int i = (int) (tile.letter) - 'A';
-            quantities[i]++;
+            if (quantities[i] < amounts[i]) {
+                quantities[i]++;
+            }
         }
 
         public int size() {
@@ -85,8 +100,8 @@ public class Tile {
         }
 
         public int[] getQuantities() {
-            int[] quantitiesCopy = (int[]) (quantities.clone());
-            return quantitiesCopy;
+
+            return quantities.clone();
 
         }
 
