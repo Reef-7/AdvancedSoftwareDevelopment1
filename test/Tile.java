@@ -72,6 +72,9 @@ public class Tile {
         }
 
         public Tile getTile(char letter) {
+            if (letter < 'A' || letter > 'Z') {
+                return null; // Return null for invalid characters
+            }
             int i = (int) (letter) - 'A';
             if (quantities[i] == 0) {
                 return null;
