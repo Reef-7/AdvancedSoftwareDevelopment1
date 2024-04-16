@@ -75,7 +75,7 @@ public class Tile {
             if (letter < 'A' || letter > 'Z') {
                 return null; // Return null for invalid characters
             }
-            int i = (int) (letter) - 'A';
+            int i = (int) (letter - 'A');
             if (quantities[i] == 0) {
                 return null;
             }
@@ -87,7 +87,7 @@ public class Tile {
         public void put(Tile tile) { // * */
             int[] amounts = { 9, 2, 2, 4, 12, 2, 3, 2, 9, 1, 1, 4, 2, 6, 8, 2, 1, 6, 4, 6, 4, 2, 2, 1, 2,
                     1 };
-            int i = (int) (tile.letter) - 'A';
+            int i = (int) (tile.letter - 'A');
             if (quantities[i] < amounts[i]) {
                 quantities[i]++;
             }
