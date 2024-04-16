@@ -85,10 +85,6 @@ public class Board {
 
     private Board() {
         this.tiles = new Tile[BOARD_SIZE][BOARD_SIZE];
-        // Initialize the board with null tiles
-        for (Tile[] row : tiles) {
-            Arrays.fill(row, null);
-        }
 
     }
 
@@ -101,6 +97,7 @@ public class Board {
 
     public Tile[][] getTiles() {
 
+        // use array.copy
         Tile[][] copy = new Tile[BOARD_SIZE][BOARD_SIZE];
         for (int i = 0; i < BOARD_SIZE; i++) {
             for (int j = 0; j < BOARD_SIZE; j++) {
