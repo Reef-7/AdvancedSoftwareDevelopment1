@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class BloomFilter {
     private int size;
-    private BitSet bitsarray;
+    BitSet bitsarray;
     public String[] hashfunctions;
     MessageDigest md;
 
